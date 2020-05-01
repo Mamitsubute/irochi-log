@@ -1,3 +1,13 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'events#index'
+  get 'events/index'
+  get 'events/show'
+  get 'events/create'
+  get 'events/delete'
+  get 'events/edit'
+  get 'users/index'
+  get 'users/show'
+  get 'users/create'
+  get 'users/delete'
+  get 'users/update'
 end
