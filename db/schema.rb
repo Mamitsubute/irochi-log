@@ -10,19 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_01_084438) do
+ActiveRecord::Schema.define(version: 2020_05_02_091111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "event_pokemons", force: :cascade do |t|
-    t.bigint "event_id"
-    t.integer "poke_id"
-    t.string "poke_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_event_pokemons_on_event_id"
-  end
 
   create_table "events", force: :cascade do |t|
     t.date "date"
@@ -30,6 +21,7 @@ ActiveRecord::Schema.define(version: 2020_05_01_084438) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "pokemon"
   end
 
   create_table "user_pokemons", force: :cascade do |t|
