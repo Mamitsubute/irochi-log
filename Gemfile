@@ -38,6 +38,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'materialize-sass', '~> 1.0.0'
 gem 'material_icons' 
+gem 'font-awesome-sass'
+
 
 group :development, :test do
   gem 'rspec-rails'

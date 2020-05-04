@@ -1,2 +1,24 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+  <div class="row">
+    <div class="col s12">
+        <%= link_to "edit", edit_event_path %>
+        <%= link_to "delete", event_path, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+        <p><%= @event.date %></p>
+        <p><%= @event.title %></p>
+        <p><%= @event.pokemon %></p>
+        <i class="fas fa-crown" style="color: orange;"></i>
+        <div class="card yellow lighten-5">
+            <div class="card-content">
+                <span class="card-title">のざ</span>
+                <p>タッチ数：153</p>
+                <p>イロチ数：6</p>
+                <p>イロチ率：8 % </p>
+                <p>MAX個体：98</p>    
+                <p>感想：初のリモート開催、楽しかったね〜</p>
+            </div>
+            <div class="card-action">
+                <%= link_to "edit", edit_user_pokemon_path %>
+                <%= link_to "delete", user_pokemon_path, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+            </div>
+        </div>
+    </div>
+  </div>

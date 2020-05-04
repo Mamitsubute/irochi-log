@@ -10,14 +10,23 @@
   </head>
   <nav>
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo left">イロチログ</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="sass.html">イベント記録</a></li>
-        <li><a href="badges.html">コンプチェッカー</a></li>
-        <li><a href="collapsible.html">こんてんつぅ</a></li>
+      <%= link_to image_tag("irochilog_logo.png", class:"brand-logo", size: '170x55'), root_path %>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-hamburger"></i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">Javascript</a></li>
+        <li><a href="mobile.html">Mobile</a></li>
       </ul>
     </div>
   </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="sass.html">Sass</a></li>
+    <li><a href="badges.html">Components</a></li>
+    <li><a href="collapsible.html">Javascript</a></li>
+    <li><a href="mobile.html">Mobile</a></li>
+  </ul>
   <body>
     <%= yield %>
   </body>
