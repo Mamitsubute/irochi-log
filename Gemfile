@@ -40,6 +40,8 @@ gem 'materialize-sass', '~> 1.0.0'
 gem 'material_icons' 
 gem 'font-awesome-sass'
 
+gem 'jquery-rails' 
+gem 'jquery-ui-rails'
 
 group :development, :test do
   gem 'rspec-rails'

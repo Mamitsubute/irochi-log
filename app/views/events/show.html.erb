@@ -1,7 +1,7 @@
   <div class="row">
     <div class="col s12">
         <%= link_to "edit", edit_event_path %>
-        <%= link_to "delete", event_path, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+        <%= link_to "delete", {controller: :events, action: :destroy}, method: :delete, data: { confirm: "本当に削除しますか？" } %>
         <p><%= @event.date %></p>
         <p><%= @event.title %></p>
         <p><%= @event.pokemon %></p>
@@ -16,6 +16,7 @@
                 <p>感想：初のリモート開催、楽しかったね〜</p>
             </div>
             <div class="card-action">
+                <%= link_to "edit", new_user_pokemon_path + "?id=5" %>
                 <%= link_to "edit", edit_user_pokemon_path %>
                 <%= link_to "delete", user_pokemon_path, method: :delete, data: { confirm: "本当に削除しますか？" } %>
             </div>

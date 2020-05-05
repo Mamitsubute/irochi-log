@@ -1,0 +1,30 @@
+<div class="row">
+    <%= form_for(user_pokemon, html: {class: "col s12"}) do |f| %>
+        <div class="row">
+            <div class="input-field col s12">
+                <%= f.collection_select(:user_id, @users, :id, :name , {prompt: "なまえを選択"}) %>
+                <%= f.label :user_id, "なまえ" %>
+            </div>
+            <div class="input-field col s12">
+                <%= f.number_field :got_num %>
+                <%= f.label :got_num, "タッチした数" %>
+            </div>
+            <div class="input-field col s12">
+                <%= f.number_field :irochi_num %>
+                <%= f.label :irochi_num, "イロチの数" %>
+            </div>
+            <div class="input-field col s12">
+                <%= f.number_field :max_kotaichi %>
+                <%= f.label :max_kotaichi, "マックス個体値" %>
+            </div>
+            <div class="input-field col s12">
+                <%= f.text_area :memo, placeholder: "なんでもどーぞ！", class: "materialize-textarea"%>
+                <%= f.label :memo, "メモ" %>
+            </div>
+            <%= f.hidden_field :event_id, :value => @event_id %>
+            <div class="col s12　offset-s6">
+                <%= f.submit "登録する", class: "waves-effect waves-light btn"%>
+            </div>
+        </div>
+    <% end %>
+</div>

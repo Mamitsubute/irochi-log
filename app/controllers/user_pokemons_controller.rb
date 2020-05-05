@@ -1,6 +1,8 @@
 class UserPokemonsController < ApplicationController
   def new
+    @event_id = params[:id]
     @user_pokemon = UserPokemon.new
+    @users = User.all
   end
 
   def create
@@ -17,6 +19,6 @@ class UserPokemonsController < ApplicationController
 
   private
   def user_pokemon_params
-      params.require(:event).permit(:title, :pokemon, :date, :description)
+    params.require(:user_pokemon).permit(:user_id, :got_num, :irochi_num, :max_kotaichi, :memo, :event_id)
   end
 end
