@@ -15,6 +15,8 @@ class EventsController < ApplicationController
   end
 
   def show
+    top_got_num = @event.user_pokemons.maximum(:got_num)
+    logger.debug(top_got_num)
   end
 
   def destroy

@@ -1,25 +1,37 @@
   <div class="row">
     <div class="col s12">
-        <%= link_to "edit", edit_event_path %>
-        <%= link_to "delete", {controller: :events, action: :destroy}, method: :delete, data: { confirm: "本当に削除しますか？" } %>
-        <p><%= @event.date %></p>
-        <p><%= @event.title %></p>
-        <p><%= @event.pokemon %></p>
-        <i class="fas fa-crown" style="color: orange;"></i>
-        <div class="card yellow lighten-5">
-            <div class="card-content">
-                <span class="card-title">のざ</span>
-                <p>タッチ数：153</p>
-                <p>イロチ数：6</p>
-                <p>イロチ率：8 % </p>
-                <p>MAX個体：98</p>    
-                <p>感想：初のリモート開催、楽しかったね〜</p>
+        <br>
+        <%= link_to edit_event_path do %>
+            <i class="fas fa-edit fa-lg fa-fw my-blue"></i>
+        <% end %>
+        <%= link_to event_path, method: :delete, data: { confirm: "本当に削除しますか？" } do  %>
+            <i class="fas fa-trash-alt fa-lg fa-fw my-red"></i>
+        <% end %>
+        <%# <%= link_to "delete", {controller: :events, action: :destroy}, method: :delete, data: { confirm: "本当に削除しますか？" } %> 
+        <h5><%= @event.date %></h5>
+        <h5><%= @event.title %></h5>
+        <h5><%= @event.pokemon %></h5>
+        <p><%= simple_format(@event.description) %></p>
+        <%= link_to new_user_pokemon_path + "?event_id=#{@event.id}", class: "waves-effect waves-light btn yellow lighten-2 black-text" do %>
+            <i class="fas fa-plus"></i> 結果を登録
+        <% end %>
+         <br>
+        <% @event.user_pokemons.each do |user_pokemon| %>
+            <div class="card yellow lighten-5">
+                <div class="card-content">
+                    <span class="card-title"><%= user_pokemon.name %></span>
+                    <p>タッチ数：<%= user_pokemon.got_num %> <i class="fas fa-crown" style="color: orange;"></i></p>
+                    <p>イロチ数：<%= user_pokemon.irochi_num %></p>
+                    <p>イロチ率：<%= ((user_pokemon.irochi_num.to_f/user_pokemon.got_num) * 100).round(1) %> % </p>
+                    <p>MAX個体値：<%= user_pokemon.max_kotaichi %></p>
+                    <br>
+                    <p><%= simple_format(user_pokemon.memo) %></p>
+                </div>
+                <div class="card-action">
+                    <%= link_to "edit", edit_user_pokemon_path(user_pokemon.id) + "?event_id=#{@event.id}" %>
+                    <%= link_to "delete", {controller: :user_pokemons, action: :destroy, id: user_pokemon.id}, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+                </div>
             </div>
-            <div class="card-action">
-                <%= link_to "edit", new_user_pokemon_path + "?id=5" %>
-                <%= link_to "edit", edit_user_pokemon_path %>
-                <%= link_to "delete", user_pokemon_path, method: :delete, data: { confirm: "本当に削除しますか？" } %>
-            </div>
-        </div>
+        <% end %>
     </div>
   </div>
