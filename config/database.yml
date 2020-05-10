@@ -21,9 +21,4 @@ test:
 production:
   adapter: postgresql
   encoding: utf8
-  reconnect: false
-  database: irochilog_production
   pool: 5
-  username: irochilog
-  password: irochilog
-  host: localhost

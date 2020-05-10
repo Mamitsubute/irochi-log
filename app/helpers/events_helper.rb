@@ -1,5 +1,6 @@
 module EventsHelper
     def show_crown(top_num, user_num)
+      return if user_num.blank?
       tag.i class: "fas fa-crown", style: "color: orange;" if top_num == user_num
     end
 
