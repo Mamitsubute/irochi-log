@@ -33,5 +33,8 @@ module Irochilog
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
     config.i18n.available_locales = [:en, :ja]
     config.time_zone = "Tokyo"
+
+    # 自動挿入されるHTMLタグ（field-with-errors）が入らないようにする
+    config.action_view.field_error_proc = proc { |html_tag, instance| html_tag }
   end
 end

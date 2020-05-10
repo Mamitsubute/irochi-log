@@ -7,7 +7,6 @@
         <%= link_to event_path, method: :delete, data: { confirm: "本当に削除しますか？" } do  %>
             <i class="fas fa-trash-alt fa-lg fa-fw my-red"></i>
         <% end %>
-        <%# <%= link_to "delete", {controller: :events, action: :destroy}, method: :delete, data: { confirm: "本当に削除しますか？" } %> 
         <h5><%= @event.date %></h5>
         <h5><%= @event.title %></h5>
         <h5><%= @event.pokemon %></h5>
@@ -20,10 +19,10 @@
             <div class="card yellow lighten-5">
                 <div class="card-content">
                     <span class="card-title"><%= user_pokemon.name %></span>
-                    <p>タッチ数：<%= user_pokemon.got_num %> <i class="fas fa-crown" style="color: orange;"></i></p>
-                    <p>イロチ数：<%= user_pokemon.irochi_num %></p>
-                    <p>イロチ率：<%= ((user_pokemon.irochi_num.to_f/user_pokemon.got_num) * 100).round(1) %> % </p>
-                    <p>MAX個体値：<%= user_pokemon.max_kotaichi %></p>
+                    <p>タッチ数：<%= user_pokemon.got_num %><%= show_crown(@top_got_num, user_pokemon.got_num) %></p>
+                    <p>イロチ数：<%= user_pokemon.irochi_num %><%= show_crown(@top_irochi_num, user_pokemon.irochi_num) %></p>
+                    <p>イロチ率：<%= irochi_percentage(user_pokemon.got_num, user_pokemon.irochi_num).to_s + " %" %><%= show_crown(@top_irochi_percentage, irochi_percentage(user_pokemon.got_num, user_pokemon.irochi_num)) %></p>
+                    <p>MAX個体値：<%= user_pokemon.max_kotaichi %><%= show_crown(@top_max_kotaichi, user_pokemon.max_kotaichi) %></p>
                     <br>
                     <p><%= simple_format(user_pokemon.memo) %></p>
                 </div>

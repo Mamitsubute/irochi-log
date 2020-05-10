@@ -1,4 +1,7 @@
 <div class="row">
+    <% if @event.errors.any? %>
+        <p class="red">必須項目が入力されていません</p>
+    <% end %>
     <%= form_for(event, html: {class: "col s12"}) do |f| %>
         <div class="row">
             <div class="input-field col s12">
@@ -18,7 +21,7 @@
                 <%= f.label :description, "イベント説明文" %>
             </div>
             <div class="col s12　offset-s6">
-                <%= f.submit "登録する", class: "waves-effect waves-light btn"%>
+                <%= button_tag '登録する', class: 'btn waves-effect waves-light', type: 'button', onclick: 'submit();' %>
             </div>
         </div>
     <% end %>

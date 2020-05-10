@@ -1,5 +1,5 @@
 class UserPokemonsController < ApplicationController
-  before_action :set_users, only: %i[new edit]
+  before_action :set_users, only: %i[new edit create]
   before_action :set_user_pokemon, only: %i[edit destroy update]
 
   def new
@@ -8,8 +8,12 @@ class UserPokemonsController < ApplicationController
   end
 
   def create
-    user_pokemon = UserPokemon.create(user_pokemon_params)
-    redirect_to event_path(user_pokemon.event_id)
+    @user_pokemon = UserPokemon.new(user_pokemon_params)
+    if @user_pokemon.save
+      redirect_to event_path(@user_pokemon.event_id)
+    else
+      render :new
+    end
   end
 
   def destroy
